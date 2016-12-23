@@ -1,0 +1,143 @@
+<html>
+<head>
+<!-- css based on http://thenewcode.com/766/Create-A-Simple-FullScreen-Image-Gallery-Slideshow-With-JS-amp-CSS -->
+        <link rel="stylesheet" type="text/css" href="css/frame.css" />
+</head>
+<body>
+<div id="container"">
+  <div id="slideshow">
+
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+    <img src="" alt>
+
+  </div>
+</div>
+</body>
+
+<script type="text/javascript">
+
+var json_data = {};
+window.onload = function() {
+  imgs = document.getElementById('slideshow').children;
+//  interval = 300000;
+  interval = 20000;
+  currentPic = 0;
+  loadJSON();  
+  console.log(json_data);
+
+
+  var pic_height = parseInt(json_data.photo[0].height);
+  var pic_width = parseInt(json_data.photo[0].width);
+  var highest_face = json_data.photo[0].highest_face;
+  console.log("h "+pic_height);
+  console.log("w "+pic_width);
+
+  imgs[currentPic].src = json_data.photo[currentPic].file_name;
+
+  var new_top = getImageTop(pic_height,pic_width,highest_face);
+  imgs[currentPic].style.top = new_top;
+  console.log("img top is now"); 
+  console.log(imgs[currentPic].style); 
+
+// animations are really too slow on the pi
+//  imgs[currentPic].style.webkitAnimation = 'fadey '+interval+'ms';
+//  imgs[currentPic].style.animation = 'fadey '+interval+'ms';
+  imgs[currentPic].style.opacity = 1.0;
+  
+  var infiniteLoop = setInterval(function(){
+
+    imgs[currentPic].src = "";
+    imgs[currentPic].removeAttribute('style');
+    if ( currentPic == imgs.length - 1) { currentPic = 0; } else { currentPic++; }
+
+// animations are really too slow on the pi
+//    imgs[currentPic].style.webkitAnimation = 'fadey '+interval+'ms';
+//    imgs[currentPic].style.animation = 'fadey '+interval+'ms';
+    imgs[currentPic].style.opacity = 1.0;
+
+//prevent caching
+    imgs[currentPic].src = json_data.photo[currentPic].file_name+'?'+Date.now();
+
+    var pic_height = parseInt(json_data.photo[currentPic].height);
+    var pic_width = parseInt(json_data.photo[currentPic].width);
+    var title = json_data.photo[currentPic].title;
+    var highest_face = json_data.photo[currentPic].highest_face;
+
+    console.log("loop h "+pic_height);
+    console.log("loop w "+pic_width);
+    console.log("title "+title);
+
+    var new_top = getImageTop(pic_height,pic_width,highest_face);
+    imgs[currentPic].style.top = new_top;
+    console.log("img [2] top is now"); 
+    console.log(imgs[currentPic].style); 
+
+    imgs[currentPic].style.opacity = 1.0;
+
+    // in case the data has changed since last time
+    loadJSON();
+
+  }, interval);
+}
+
+function getImageTop(pic_height,pic_width,highest_face){
+  var new_top = 0;
+
+  if(pic_height >= pic_width){
+      console.log("portrait");
+      console.log("highest_face "+highest_face);
+
+      //if there is one, put the highest near the top
+      if(highest_face!=""){
+        var hf = parseInt(highest_face);
+        new_top = -(hf);
+        console.log("new top is for portrait+face "+new_top);
+      }else{
+        new_top = -(parseInt(pic_height/5));
+        console.log("new top for portraint / no face is "+new_top);
+      }
+
+  }else{
+    console.log("landscape");
+  }
+  return new_top;
+}
+
+
+function loadJSON() {   
+
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'data.json?'+Date.now(), false);//sigh 
+    xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            console.log("re-loading the json");
+            json_data = JSON.parse(xobj.responseText);
+            console.log(json_data);
+          }
+    };
+    xobj.send(null);  
+}
+
+</script>
+</html>
