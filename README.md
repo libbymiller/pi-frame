@@ -18,7 +18,7 @@ https://www.flickr.com/services/apps/create/noncommercial/
 
 ## Provision a micro SD card
 
-Download a full Jessie, not lite or NOOBS. I'm asumming 2016-09-23 release and a Pi3. This is on a Mac.
+Download a full [Jessie](https://www.raspberrypi.org/downloads/raspbian/) with Pixel, not lite or NOOB, and put it on your micro SD card. I'm asumming 2016-11-25 release. This is on a Mac.
 
 (N is a number, usually 2 for me)
 
@@ -26,7 +26,7 @@ Download a full Jessie, not lite or NOOBS. I'm asumming 2016-09-23 release and a
     diskutil unmountDisk /dev/diskN
     sudo dd bs=1m if=~/Downloads/2016-11-25-raspbian-jessie.img of=/dev/rdiskN
     
-Depending on your version of Jessie, you may need to enable ssh (again before ejecting) - [see this security update](https://www.raspberrypi.org/blog/a-security-update-for-raspbian-pixel/)
+Depending on your version of Jessie, you may need to enable ssh (before ejecting) - [see this security update](https://www.raspberrypi.org/blog/a-security-update-for-raspbian-pixel/)
 
     touch /Volumes/boot/ssh
 
@@ -34,7 +34,7 @@ Depending on your version of Jessie, you may need to enable ssh (again before ej
 
 For the Zero, [follow these instructions](http://blog.gbaman.info/?p=791)
 
-For Pi3, I usually use etheret and shared network to ssh in.
+For Pi3, I usually use an ethernet and System preferences -> Sharing -> Internet sharing, and then ssh in as pi@raspberrypi.local - or you could use a screen and keyboard / mouse.
 
 ## Change hostname, password, add wifi
 
@@ -66,20 +66,32 @@ or if your network has no password
 
 ## Get this repo
 
-    git clone git@github.com:libbymiller/pi-frame.git /home/pi/frame
+    git clone https://github.com/libbymiller/pi-frame.git /home/pi/frame
 
 ## Install prerequisites
 
     sudo apt-get install unclutter
-    pip install flickrapi
+    sudo pip install flickrapi
 
 If using face detection
 
-    pip install numpy
     sudo apt-get install python-opencv
+    cd /home/pi/frame
     curl -O https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml
 
-## Test (if connected to a screen
+## Do first download and log in to flickr
+
+edit cacheimages.py and add your flickr api parameters and user id
+
+    python cacheimages.py 
+    
+or 
+
+    python cacheimages_zero.py
+
+(you'll need to put the url it prints into a browser and then paste in the code that flickr gives you. The script will then download some images).
+
+## Test (if connected to a screen)
 
     export DISPLAY=:0.0
     bash /home/pi/frame/frame.sh
@@ -110,3 +122,4 @@ or for pi zero (no face detection)
 
     0,15,30,45 * * * * cd /home/pi/frame && /usr/bin/python cacheimages_zero.py > log.txt 2>&1
 
+Attach screen and reboot.
