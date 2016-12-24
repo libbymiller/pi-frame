@@ -78,14 +78,14 @@ or if your network has no password
 
 ## Install prerequisites
 
-   sudo apt-get install unclutter
-   pip install flickrapi
+    sudo apt-get install unclutter
+    pip install flickrapi
 
 If using face detection
 
-   pip install numpy
-   sudo apt-get install python-opencv
-   curl -O https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml
+    pip install numpy
+    sudo apt-get install python-opencv
+    curl -O https://raw.githubusercontent.com/opencv/opencv/master/data/haarcascades/haarcascade_frontalface_default.xml
 
 ## Test (if connected to a screen
 
