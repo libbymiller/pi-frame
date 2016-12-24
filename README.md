@@ -1,6 +1,6 @@
 # pi-frame
 
-A simple Raspberry Pi based photo frame. See the blog post for more info: https://planb.nicecupoftea.org/2016/12/23/a-simple-raspberry-pi-based-picture-frame-using-flickr/
+A simple Raspberry Pi based photo frame. See the [blog post](https://planb.nicecupoftea.org/2016/12/23/a-simple-raspberry-pi-based-picture-frame-using-flickr/) for more info.
 
 # Instructions
 
