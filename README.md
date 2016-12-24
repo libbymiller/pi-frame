@@ -25,14 +25,6 @@ Download a full Jessie, not lite or NOOBS. I'm asumming 2016-09-23 release and a
     diskutil list
     diskutil unmountDisk /dev/diskN
     sudo dd bs=1m if=~/Downloads/2016-11-25-raspbian-jessie.img of=/dev/rdiskN
-
-While the SD card is still in your main machine, in config enable lirc module
-
-    sudo pico /Volumes/boot/config.txt
-
-Uncomment this to enable the lirc-rpi module
-
-    dtoverlay=lirc-rpi
     
 Depending on your version of Jessie, you may need to enable ssh (again before ejecting) - [see this security update](https://www.raspberrypi.org/blog/a-security-update-for-raspbian-pixel/)
 
