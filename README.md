@@ -34,7 +34,7 @@ Depending on your version of Jessie, you may need to enable ssh (before ejecting
 
 For the Zero, [follow these instructions](http://blog.gbaman.info/?p=791)
 
-For Pi3, I usually use an ethernet and System preferences -> Sharing -> Internet sharing, and then ssh in as pi@raspberrypi.local - or you could use a screen and keyboard / mouse.
+For Pi3, I usually use an ethernet cable to connect my laptop and the Pi and then go to System preferences -> Sharing -> Internet sharing, and then ssh in as pi@raspberrypi.local - or you could use a screen and keyboard / mouse.
 
 ## Change hostname, password, add wifi
 
@@ -47,7 +47,7 @@ change hostname
     sudo pico /etc/hosts
     sudo pico /etc/hostname
 
-add wifi credentials
+add wifi credentialsj
 
     sudo pico /etc/wpa_supplicant/wpa_supplicant.conf
 
