@@ -6,7 +6,7 @@ A simple Raspberry Pi based photo frame. See the blog post for more info: https:
 
 ## Gather hardware
 
-Version 1: Pi3, official touchscreen (you'll need a 2.5A power supply to power them together), 8GB micro SD card, and a ModMyPi customisable Pi screen stand.
+Version 1: [Pi3](https://shop.pimoroni.com/products/raspberry-pi-3), official touchscreen (you’ll need a 2.5A power supply to power them together), 8GB micro SD card, and a ModMyPi customisable Pi screen stand.
 
 Version 2: Pi Zero, micro USB converter, USB wifi, mini HDMI converter, HDMI cable, 8GB micro SD card, data micro USB cable, maybe a case.
 
