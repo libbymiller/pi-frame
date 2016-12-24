@@ -18,7 +18,7 @@ https://www.flickr.com/services/apps/create/noncommercial/
 
 ## Provision a micro SD card
 
-Download a full [Jessie](https://www.raspberrypi.org/downloads/raspbian/) with Pixel, not lite or NOOB, and put it on your micro SD card. I'm asumming 2016-11-25 release. This is on a Mac.
+Download a full [Jessie](https://www.raspberrypi.org/downloads/raspbian/) with Pixel, not lite or NOOBS, and put it on your micro SD card. I'm asumming 2016-11-25 release. This is on a Mac.
 
 (N is a number, usually 2 for me)
 
@@ -91,11 +91,13 @@ or
 
 (you'll need to put the url it prints into a browser and then paste in the code that flickr gives you. The script will then download some images).
 
-## Test (if connected to a screen)
+## Test 
 
     export DISPLAY=:0.0
     bash /home/pi/frame/frame.sh
-    
+
+if connected to a screen it should just work; if not, you can still test it by going to http://pi-ip.local:3000 on a computer on the same network.
+
 ## Configure crontab and autostart
 
     pico ~/.config/lxsession/LXDE-pi/autostart
