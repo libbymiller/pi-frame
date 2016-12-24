@@ -91,11 +91,13 @@ or
 
 (you'll need to put the url it prints into a browser and then paste in the code that flickr gives you. The script will then download some images).
 
-## Test (if connected to a screen)
+## Test 
 
     export DISPLAY=:0.0
     bash /home/pi/frame/frame.sh
-    
+
+if connected to a screen it should just work; if not, you can still test it by going to http://pi-ip.local:3000 on a computer on the same network.
+
 ## Configure crontab and autostart
 
     pico ~/.config/lxsession/LXDE-pi/autostart
