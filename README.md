@@ -6,9 +6,9 @@ A simple Raspberry Pi based photo frame. See the blog post for more info: https:
 
 ## Gather hardware
 
-Version 1: [Pi3](https://shop.pimoroni.com/products/raspberry-pi-3), official touchscreen (you’ll need a 2.5A power supply to power them together), 8GB micro SD card, and a ModMyPi customisable Pi screen stand.
+Version 1: [Pi3](https://shop.pimoroni.com/products/raspberry-pi-3), [official touchscreen](http://uk.rs-online.com/web/p/graphics-display-development-kits/8997466/) (you’ll need a [2.5A power supply](https://shop.pimoroni.com/products/raspberry-pi-universal-power-supply) to power them together), 8GB micro SD card, and a [ModMyPi customisable Pi screen stand](https://www.modmypi.com/raspberry-pi/cases/7-touchscreen-cases/raspberry-pi-7-touchscreen-case--plus-stand/).
 
-Version 2: Pi Zero, micro USB converter, USB wifi, mini HDMI converter, HDMI cable, 8GB micro SD card, data micro USB cable, maybe a case.
+Version 2: [Pi Zero](https://shop.pimoroni.com/products/pi-zero-complete-starter-kit), [micro USB converter](https://shop.pimoroni.com/products/usb-to-microusb-otg-converter-shim), [USB wifi](http://uk.farnell.com/element14/wipi/dongle-wifi-usb-for-raspberry/dp/2133900), [mini HDMI converter](https://www.modmypi.com/raspberry-pi/raspberry-pi-zero-board/rpi-zero-accessories/pi-zero-hdmi-adaptor-mini-hdmi-to-hdmi/?search=mini-HDMI), HDMI cable, 8GB micro SD card, data micro USB cable, maybe a case.
 
 ## Create a flickr account and get a developer key
 
@@ -34,13 +34,13 @@ Uncomment this to enable the lirc-rpi module
 
     dtoverlay=lirc-rpi
     
-Depending on your version of Jessie, you may need to enable ssh (again before ejecting)
+Depending on your version of Jessie, you may need to enable ssh (again before ejecting) - [see this security update](https://www.raspberrypi.org/blog/a-security-update-for-raspbian-pixel/)
 
     touch /Volumes/boot/ssh
 
 ## Log in to the pi
 
-for the Zero, follow these instructions: http://blog.gbaman.info/?p=791
+For the Zero, [follow these instructions](http://blog.gbaman.info/?p=791)
 
 For Pi3, I usually use etheret and shared network to ssh in.
 
@@ -78,6 +78,7 @@ or if your network has no password
 
 ## Install prerequisites
 
+   sudo apt-get install unclutter
    pip install flickrapi
 
 If using face detection
@@ -103,6 +104,7 @@ contents should be:
     @xset s off
     @xset -dpms
     @xset s noblank
+    @unclutter -idle 0.1 -root
 
     @/bin/bash /home/pi/frame/frame.sh
 
