@@ -13,14 +13,34 @@ Version 2: Pi Zero, micro USB converter, USB wifi, mini HDMI converter, HDMI cab
 ## Create a flickr account and get a developer key
 
 https://www.flickr.com/signup
+
 https://www.flickr.com/services/apps/create/noncommercial/
 
-## Provision an SD card
+## Provision a micro SD card
 
+Download a full Jessie, not lite or NOOBS. I'm asumming 2016-09-23 release and a Pi3. This is on a Mac.
+
+(N is a number, usually 2 for me)
+
+    diskutil list
+    diskutil unmountDisk /dev/diskN
+    sudo dd bs=1m if=~/Downloads/2016-09-23-raspbian-jessie.img of=/dev/rdiskN
+
+While the SD card is still in your main machine, in config enable lirc module
+
+    sudo pico /Volumes/boot/config.txt
+
+Uncomment this to enable the lirc-rpi module
+
+    dtoverlay=lirc-rpi
+    
+Depending on your version of Jessie, you may need to enable ssh (again before ejecting)
+
+    touch /Volumes/boot/ssh
 
 ## Log in to the pi
 
-for the Zero, follow these instructions:
+for the Zero, follow these instructions: http://blog.gbaman.info/?p=791
 
 For Pi3, I usually use etheret and shared network to ssh in.
 
