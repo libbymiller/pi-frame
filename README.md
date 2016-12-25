@@ -18,7 +18,7 @@ https://www.flickr.com/services/apps/create/noncommercial/
 
 ## Provision a micro SD card
 
-Download a full [Jessie](https://www.raspberrypi.org/downloads/raspbian/) with Pixel, not lite or NOOBS, and put it on your micro SD card. I'm asumming 2016-11-25 release. This is on a Mac.
+Download a full [Jessie](https://www.raspberrypi.org/downloads/raspbian/) with Pixel, not lite or NOOBS, and put it on your micro SD card. I'm asuming 2016-11-25 release. This is on a Mac.
 
 (N is a number, usually 2 for me)
 
