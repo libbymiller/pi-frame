@@ -47,7 +47,7 @@ change hostname
     sudo pico /etc/hosts
     sudo pico /etc/hostname
 
-add wifi credentialsj
+add wifi credentials
 
     sudo pico /etc/wpa_supplicant/wpa_supplicant.conf
 
